@@ -1,0 +1,73 @@
+
+@import "helpers.css";
+/* @import "modal.css"; */
+@import "footer.css";
+@import "header.css";
+@import "images.css";
+@import "fillters.css";
+@import "test.css";
+
+
+html, body{
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+*, *:after, *:before {
+    box-sizing: inherit;
+    /* width: 100%; */
+}
+
+
+.filter-list{
+    width: 20%;
+}
+
+
+.shadow-checkbox:checked + .shadow{
+    color: blue;
+}
+
+button{
+    cursor: pointer;
+}
+
+/* 
+.imgs-list{
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 100%;
+    /* display: flex;
+    flex-wrap: wrap; */
+
+
+
+.gallery-container{
+    /* background:#053205D6; */
+    
+    background: bisque;
+    margin: 0;
+
+}
+
+.shadow.checked {
+    color: blue;
+}
+
+.imgs-list li{
+    transition:all .6s;
+    opacity: 0.7;
+}
+
+
+.imgs-list li:hover{
+    opacity: 1;
+
+}
+
+button:focus {outline:0;}
+input:focus {outline:0;}
