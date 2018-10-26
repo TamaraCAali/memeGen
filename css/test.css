@@ -37,7 +37,7 @@
 .text-input{
     width: 80%;
     height: 40px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     background: #80808042;
     border: none;
 }
@@ -128,14 +128,17 @@
         text-align: center;
     }
     .test-control-btns{
-        max-width: 300px;
+        max-width: 250px;
         margin: 0 auto;
     }
     .test-extars-btns,.first-text-tools{
         width: 80%;
-    margin: 0 auto;
+        margin: 0 auto;
     }
     .first-text-tools{
         margin-bottom: 17px;
+    }
+    .text-input{
+        margin-top: 20px;
     }
 }
