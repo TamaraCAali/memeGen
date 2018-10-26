@@ -57,6 +57,7 @@ function onAddLine() {
     document.querySelector('.text-input').value = '';
     document.querySelector('.btn-color').value = '#ffffff';
     document.querySelector('.shadow-checkbox').checked = false;
+    document.querySelector('.textIdx').value = gCurrTxtIdx+1;
     // document.querySelector('.shadow-checkbox').style.color = 'black';
 }
 
@@ -96,7 +97,8 @@ function drawImage() {
         gCtx.lineWidth = 2;
         //NEWWWW
         gCtx.textAlign = text.align; 
-        gCtx.fillText(text.line, text.x, text.y);
+        // gCtx.textAlign = 'center';
+        gCtx.fillText(text.line, text.x , text.y);
         gCtx.strokeText(text.line, text.x, text.y);
     });
 }
