@@ -1,4 +1,4 @@
-.test-container{
+.modal-container{
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -15,24 +15,24 @@
 }
 
 #canvas{
-    border: 10px solid azure;
+    border: 3px solid azure;
     /* background: azure; */
     
 }
 
 
-.test-container.open{
+.modal-container.open{
     top: 0;
 }
 
-.test-save-delete{
+.modal-save-back{
     display: flex;
     width: 100%;
     justify-content: space-between;
     margin-top: 15px;
 }
 
-.test-save-delete>*{
+.modal-save-back>*{
     font-size: 30px;
     border: none;
     color: azure;
@@ -42,9 +42,7 @@
 
 
 
-.test-control-btns{
-    /* width: 300px;
-    height: 400px; */
+.edit-btns{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,31 +53,27 @@
     width: 80%;
     height: 40px;
     margin-bottom: 20px;
-    /* background: azure; */
-    /* border: none; */
     background: azure;
     border: 2px solid;
 }
 
-.first-text-tools{
+.text-tools{
     display: flex;
     justify-content: center;
     margin-bottom: 15px;
-    /* flex-direction: column; */
 }
 
-.test-extars-btns{
+.extars-btns{
     display: flex;
-    /* flex-direction: column; */
 }
 
-.all{
+.all-btns{
     visibility: hidden;
 }
 
-.all.open{
+.all-btns.open{
     visibility:visible;
-    background: #c0c0c073;    /* width: 100%; */
+    background: #c0c0c073;  
     height: 140px;
      transition: .6s;
 }
@@ -87,18 +81,19 @@
 .textIdx{
     background: none;
     border: none;
+    padding: 0;
+    margin: 0;
     width: 20px;
     height: 20px;
     text-align: center;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 
 
-#align-center, #align-left, #align-right, .btn-color ,.font-resize-btn,
- #left, #up, #right, #down, #font, .nxt-line, .prev-line, .delete-txt,.add-line
+.align-center, .align-left, .align-right, .btn-color ,.font-resize-btn,
+ .left, .up, .right, .down, .font, .nxt-line, .prev-line, .delete-txt,.add-line
 {
-  /* background-color: #868f98; */
   background: black;
   width: 35px;
   height: 35px;
@@ -117,7 +112,7 @@
     font-size: 18px;
 }
 
-.nxt-line,.prev-line,.add-line,#font{
+.nxt-line,.prev-line,.add-line,.font{
     width: 80px;
     text-align: center;
     margin-right: 5px;
@@ -125,7 +120,7 @@
 
 
 @media(min-width:800px){
-    .try{
+    .canvas-controlers{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -133,8 +128,7 @@
         margin-top: 70px;
 
     }
-    .test-control-btns{
-    /* width: 400px; */
+    .edit-btns{
     background: #c0c0c0d1;
     height: 500px;
     display: flex;
@@ -147,10 +141,9 @@
     .text-input{
         height: 70px;
     }
-    .all{
+    .all-btns{
         visibility: visible;
     }
-
 }
 @media(max-width:650px){
     #canvas{
@@ -159,18 +152,16 @@
     .scatch{
         text-align: center;
     }
-    .test-control-btns{
+    .edit-btns{
         max-width: 250px;
-        /* width: 100%; */
         margin: 0 auto;
 
-        /* height: fit-content; */
     }
-    .test-extars-btns,.first-text-tools{
+    .extars-btns,.text-tools{
         width: 80%;
         margin: 0 auto;
     }
-    .first-text-tools{
+    .text-tools{
         margin-bottom: 17px;
         margin-top: 20px;
     }
@@ -179,10 +170,10 @@
         background: aliceblue;
         width: 100%;
     }
-    .try{
-        margin-top: 42px;
+    .canvas-controlers{
+        margin-top: 18px;
     }
-    .test-container{
+    .modal-container{
         background-size: cover;
     }
 }

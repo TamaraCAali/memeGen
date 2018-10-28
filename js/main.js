@@ -1,6 +1,9 @@
+var canvas;
 
 function init() {
+    canvas = document.querySelector('#canvas');
     renderImgs(gImgs);
+    renderPopWords();
 }
 
 function onChangeFontFam(elFont) {
@@ -16,22 +19,19 @@ function onChangeFontFam(elFont) {
             gCurrMeme.texts[gCurrTxtIdx].fontFamily = '"Comic Sans MS", cursive, sans-serif';
             break;
     }
-    drawImage();
-
+    // drawImage();
+    renderCanvas();
 }
 
 
-function onInputTap(){
-document.querySelector('.all').classList.add('open');
-// document.querySelector('.text-input').value='';
+function onInputTap() {
+    document.querySelector('.all-btns').classList.add('open');
 }
 
 
 
 function onAddText(elInput) {
     updateText(elInput)
-    // currTxtIdx = textIdx
-    // drawImage();
 }
 
 function onNavLine(op) {
@@ -46,19 +46,16 @@ function onNavLine(op) {
     document.querySelector('.text-input').value = gCurrMeme.texts[gCurrTxtIdx].line;
     document.querySelector('.btn-color').value = gCurrMeme.texts[gCurrTxtIdx].color;
     document.querySelector('.textIdx').value = gCurrTxtIdx + 1;
-    // document.querySelector('.shadow-checkbox').checked = false;
 }
 
 function onAddLine() {
-    var text = document.querySelector('.text-input').value;
-    createLine(text);
+    createLine();
     gCurrTxtIdx = gCurrMeme.texts.length - 1;
     if (gCurrTxtIdx > 1) gCurrMeme.texts[gCurrTxtIdx].y = 150;
     document.querySelector('.text-input').value = '';
     document.querySelector('.btn-color').value = '#ffffff';
     document.querySelector('.shadow-checkbox').checked = false;
-    document.querySelector('.textIdx').value = gCurrTxtIdx+1;
-    // document.querySelector('.shadow-checkbox').style.color = 'black';
+    document.querySelector('.textIdx').value = gCurrTxtIdx + 1;
 }
 
 function renderImgs(imgs) {
@@ -68,47 +65,42 @@ function renderImgs(imgs) {
 
 function onDrawImg(imgId) {
     gImgId = imgId;
-    drawImage();
-    // document.querySelector('.continer-modal').style.display = 'block';
-    // document.querySelector('.screen-modal').style.display = 'block';
-    document.querySelector('.test-container').classList.add('open');
+    gCurrMeme.texts = [];
+    createLine();
+    gCurrTxtIdx = 0;
+    document.querySelector('.text-input').value = '';
+    document.querySelector('.textIdx').value = '1';
+    document.querySelector('.textIdx').innerHTML = gCurrTxtIdx + 1;
+    document.querySelector('.modal-container').classList.add('open');
+    renderCanvas();
 
 }
 
 
-//rendering with for each
-function drawImage() {
-    // initCanvas();
+function renderCanvas() {
     var imgClass = gImgId;
     var img = document.querySelector(`._${imgClass}`);
     drawCanvas(img);
-    console.log('gCtx',gCtx)
-    // canvas.width = img.innerWidth/2;
-    // canvas.height = window.innerWidth/2;
     gCtx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    //TODO: DO WITH FOR EACH
     gCurrMeme.texts.forEach(function (text) {
         gCtx.font = text.fontSize + 'px ' + text.fontFamily;
         gCtx.shadowColor = text.shadow;
         gCtx.shadowOffsetX = text.shadowOffSetX;
         gCtx.shadowOffsetY = text.shadowOffSetY;
         gCtx.fillStyle = text.color;
-        gCtx.strokeStyle = 'black';
         gCtx.lineWidth = 2;
-        //NEWWWW
-        gCtx.textAlign = text.align; 
-        // gCtx.textAlign = 'center';
-        gCtx.fillText(text.line, text.x , text.y);
+        gCtx.strokeStyle = 'black';
+        gCtx.textAlign = text.align;
+        gCtx.fillText(text.line, text.x, text.y);
         gCtx.strokeText(text.line, text.x, text.y);
     });
 }
 
-//NEWWWW
 function onTextAlign(par) {
     switch (par) {
         case 'center':
             gCurrMeme.texts[gCurrTxtIdx].align = 'center';
-            gCurrMeme.texts[gCurrTxtIdx].x = canvas.width/2;
+            gCurrMeme.texts[gCurrTxtIdx].x = canvas.width / 2;
 
             break;
         case 'left':
@@ -118,11 +110,12 @@ function onTextAlign(par) {
             break;
         case 'right':
             gCurrMeme.texts[gCurrTxtIdx].align = 'right';
-            gCurrMeme.texts[gCurrTxtIdx].x = canvas.width-5;
+            gCurrMeme.texts[gCurrTxtIdx].x = canvas.width - 5;
 
             break;
     }
-    drawImage();
+    // drawImage();
+    renderCanvas();
 }
 
 function changeFontSize(op) {
@@ -133,26 +126,26 @@ function changeFontSize(op) {
     }
     var fontSize = gCurrMeme.texts[gCurrTxtIdx].fontSize;
     gCurrMeme.texts[gCurrTxtIdx].fontSize = fontSize;
-    drawImage();
+    // drawImage();
+    renderCanvas();
 }
 
 function onColorChange(elColorInput) {
     var color = elColorInput.value;
     gCurrMeme.texts[gCurrTxtIdx].color = color;
-    drawImage();
+    // drawImage();
+    renderCanvas();
 }
 
 function onBackhomePage() {
- 
-    document.querySelector('.test-container').classList.remove('open');
-    document.querySelector('.all').classList.remove('open');
-
+    document.querySelector('.modal-container').classList.remove('open');
+    document.querySelector('.all-btns').classList.remove('open');
     clearMeme();
 }
 
 function clearMeme() {
-    gCurrMeme.texts.forEach(function (undefined, idx) {
-        gCurrMeme.texts[idx].line = '';
+    gCurrMeme.texts.forEach(function (text) {
+        text.line = '';
     });
 }
 
@@ -164,53 +157,46 @@ function onDescriptionfilter(ev) {
 }
 
 function changeTextXPos(elBtnId) {
-    console.log(elBtnId);
     if (elBtnId === 'left') gCurrMeme.texts[gCurrTxtIdx].x -= 5;
     else gCurrMeme.texts[gCurrTxtIdx].x += 5;
-    drawImage();
+    renderCanvas();
 }
 
 function changeTextYPos(elBtnId) {
-    console.log(elBtnId);
     if (elBtnId === 'up') gCurrMeme.texts[gCurrTxtIdx].y -= 5;
     else gCurrMeme.texts[gCurrTxtIdx].y += 5;
-    drawImage();
+    renderCanvas();
 }
 
 
-// function changeTextAlignment(elBtnId) {
-//     if (elBtnId === 'align-left') gCurrMeme.texts[gCurrTxtIdx].x = (canvas.width / 2) - 130;
-//     else if (elBtnId === 'align-right') gCurrMeme.texts[gCurrTxtIdx].x = (canvas.width / 2) + 50;
-//     else gCurrMeme.texts[gCurrTxtIdx].x = (canvas.width / 2) - 50;
-
-//     drawImage();
-
-// }
-
 function controlTextShadow() {
     var checkBox = document.querySelector('.shadow-checkbox');
-    
+
     if (checkBox.checked) {
         gCurrMeme.texts[gCurrTxtIdx].shadow = '#ffffff';
         gCurrMeme.texts[gCurrTxtIdx].shadowOffSetX = 1;
         gCurrMeme.texts[gCurrTxtIdx].shadowOffSetY = 2;
+        gCurrMeme.texts[gCurrTxtIdx].shadowBlur = 2;
         document.querySelector('.shadow').classList.add('checked');
-        
+
     }
     else {
         gCurrMeme.texts[gCurrTxtIdx].shadow = '';
         gCurrMeme.texts[gCurrTxtIdx].shadowOffSetX = 0;
         gCurrMeme.texts[gCurrTxtIdx].shadowOffSetY = 0;
+        gCurrMeme.texts[gCurrTxtIdx].shadowBlur = 0;
         document.querySelector('.shadow').classList.remove('checked');
     }
-    drawImage();
+    // drawImage();
+    renderCanvas();
 }
 
 function onDeleteline() {
     var elInput = document.querySelector('.text-input');
-    gCurrMeme.texts[gCurrTxtIdx].line = '';
+    gCurrMeme.texts.splice(gCurrTxtIdx, 1);
     elInput.value = '';
-    drawImage();
+    // drawImage();
+    renderCanvas();
 }
 
 function openNav() {
@@ -236,11 +222,18 @@ function closeNav() {
 }
 
 function downloadCanvas(elLink) {
-
-    console.log(elLink);
     elLink.href = canvas.toDataURL();
     elLink.download = 'my_paint.jpg';
 }
+
+
+function onPopWord(elWord, el) {
+    gPopularWords[elWord]++
+    saveToStorage('Popular Words', gPopularWords)
+    var imgs = onPopfilter(el);
+    renderImgs(imgs);
+}
+
 
 
 function sendInfo() {
@@ -253,6 +246,6 @@ function sendInfo() {
     $(".user-text").val('');
 
     window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=idokestin@gmail.com&su=${userSubject}&body=${userText}`, '_blank');
-  
 
 }
+

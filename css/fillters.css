@@ -20,5 +20,17 @@
     border: none;
     background: none;
     border-bottom: 3px solid black;
-    /* text-align: center; */
+}
+
+
+
+.popluar-words-container{
+    padding: 20px;
+    background: burlywood;
+    text-align: center;
+}
+
+.popular-item{
+    text-decoration: none;
+    color: antiquewhite;
 }

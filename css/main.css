@@ -1,11 +1,11 @@
 
 @import "helpers.css";
 /* @import "modal.css"; */
-@import "footer.css";
+/* @import "footer.css"; */
 @import "header.css";
 @import "images.css";
 @import "fillters.css";
-@import "test.css";
+@import "meme-modal.css";
 
 
 html, body{
@@ -19,7 +19,6 @@ body {
 
 *, *:after, *:before {
     box-sizing: inherit;
-    /* width: 100%; */
 }
 
 
@@ -36,20 +35,7 @@ button{
     cursor: pointer;
 }
 
-/* 
-.imgs-list{
-    margin: 0 auto;
-    margin-top: 30px;
-    width: 100%;
-    /* display: flex;
-    flex-wrap: wrap; */
-
-
-
 .gallery-container{
-    /* background:#053205D6; */
-    
-    background: bisque;
     margin: 0;
 
 }

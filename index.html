@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Chewy|Fredericka+the+Great|Gloria+Hallelujah|Indie+Flower|Kirang+Haerang|Loved+by+the+King|Monoton|Nanum+Pen+Script|Nothing+You+Could+Do|Shadows+Into+Light"
         rel="stylesheet">
     <title>Tamara Meme Gen</title>
@@ -24,9 +25,9 @@
                     <img class="logo-img" src="img/yuno.png"> Memes World</h1>
                 <nav class="main-nav flex space-between" id="main-nav">
                     <a href="#" class="main-nav-item flex">Portfolio</a>
-                    <a href="#" class="main-nav-item flex">About</a>
+                    <a href="about.html" class="main-nav-item flex">About</a>
                     <a href="#" class="main-nav-item flex">Blog</a>
-                    <a href="#" class="main-nav-item flex">Get in touch</a>
+                    <a href="contact.html" target="_blank" class="main-nav-item flex">Get in touch</a>
                     <a href="#" class="main-nav-item flex hambunger" onclick="openNav()">☰</a>
                 </nav>
             </div>
@@ -35,9 +36,9 @@
         <section>
             <nav class="mobile-nav container flex column">
                 <a href="#" class="main-nav-item flex">Portfolio</a>
-                <a href="#" class="main-nav-item flex">About</a>
+                <a href="about.html" class="main-nav-item flex">About</a>
                 <a href="#" class="main-nav-item flex">Blog</a>
-                <a href="#" class="main-nav-item flex">Get in touch</a>
+                <a href="contact.html" class="main-nav-item flex">Get in touch</a>
             </nav>
         </section>
 
@@ -46,163 +47,92 @@
 
 
     <div class="gallery-container flex column content-center">
+        <div class="popluar-words-container">
+            <a href="#" class="popular-item Happy" onclick="onPopWord('0', this)" data-trans="pop-happy">Happy</a>
+            <a href="#" class="popular-item Determined" onclick="onPopWord('1', this)" data-trans="pop-Determined">Determined</a>
+            <a href="#" class="popular-item Cute" onclick="onPopWord('2', this)" data-trans="pop-Cute">Cute</a>
+            <a href="#" class="popular-item Exciting" onclick="onPopWord('3', this)" data-trans="pop-Exciting">Exciting</a>
+            <a href="#" class="popular-item Surprised" onclick="onPopWord('4', this)" data-trans="pop-Surprised">Surprised</a>
+        </div>
         <form method="get" class="filter-list flex">
             <h3>Search for a meme</h3>
             <div class="list-container flex">
-                <input list="browsers" name="browser" class="filter-list-input" oninput="onDescriptionfilter(event, this.value)" placeholder="Search">
+                <input list="browsers" name="browser" class="filter-list-input" oninput="onDescriptionfilter(event, this.value)"
+                    placeholder="Search">
                 <datalist id="browsers">
                     <option value="All">
-                        <option value="Happy">
-                            <option value="Determined">
-                                <option value="Cute">
-                                    <option value="Exciting">
+                    <option value="Happy">
+                    <option value="Determined">
+                    <option value="Cute">
+                    <option value="Exciting">
                 </datalist>
         </form>
-        </div>
-        <ul class="imgs-list flex wrap">
-        </ul>
+    </div>
+    <ul class="imgs-list flex wrap">
+    </ul>
     </div>
 
 
     <div class="screen-modal"></div>
-<!-- testtttttt -->
-    <div class="test-container">
-        <div class="test-save-delete">
+    <div class="modal-container">
+        <div class="modal-save-back">
             <button class="btn-clear" onClick="onBackhomePage()">
-                    <i class="fas fa-arrow-circle-left"></i></i></button>
+                <i class="fas fa-arrow-circle-left"></i></button>
             <button name="save" class="save">
                 <a onclick="downloadCanvas(this)" class="fa fa-download"></a>
             </button>
-            
+
         </div>
-    <div class="try">
+        <div class="canvas-controlers">
             <div class="scatch">
                 <canvas id="canvas"></canvas>
             </div>
-            <div class="test-control-btns">
+            <div class="edit-btns">
                 <input type="text" class="text-input" id="text-1" onclick="onInputTap()" onkeyup="onAddText(this)"
                     placeholder="Insert text here">
-                    <div class="all">
-                <div class="first-text-tools">
-                    <button class="canvas-tool add-line" onclick="onAddLine()">Add Line</button>
-                    <button class="canvas-tool prev-line" onclick="onNavLine('-')">◀ Previous</button>
-                    <input class="textIdx" type="text" value="1">
-                    <button class="nxt-line" onclick="onNavLine('+')">Next ▶</button>
-                    <select id="font" onchange="onChangeFontFam(this.value)">
+                <div class="all-btns">
+                    <div class="text-tools">
+                        <button class="canvas-tool add-line" onclick="onAddLine()">Add Line</button>
+                        <button class="canvas-tool prev-line" onclick="onNavLine('-')">◀ Previous</button>
+                        <input class="textIdx" type="text" value="1">
+                        <button class="nxt-line" onclick="onNavLine('+')">Next ▶</button>
+                        <select class="font" onchange="onChangeFontFam(this.value)">
                             <option value="impact">Impact</option>
                             <option value="lucida">Lucida</option>
                             <option value="comic">Comic</option>
                         </select>
-                </div>
-                <div class="test-extars-btns">
-      <input class="btn-color" type="color" name="Textcolor" value="#ffffff" onchange="onColorChange(this)" />
-        <button class="increase font-resize-btn" onclick="changeFontSize('+')">
-                <i class="fas fa-font"></i></button>
-        <button class="font-resize-btn" onclick="changeFontSize('-')">
-                <i class="fas fa-font"></i></button>
-        <label class="shadow">❏
-                <input type="checkbox" class="shadow-checkbox" onchange="controlTextShadow()">
-            </label>
-
-            <button id="left" onclick="changeTextXPos(this.id)">←</button>
-                    <button id="up" onclick="changeTextYPos(this.id)">↑</button>
-                    <button id="right" onclick="changeTextXPos(this.id)">→</button>
-                    <button id="down" onclick="changeTextYPos(this.id)">↓</button>
-                    <button id="align-left" onclick="onTextAlign('left')">
-                            <i class="fas fa-align-left"></i></button>
-                    <button id="align-center" onclick="onTextAlign('center')">
-                            <i class="fas fa-align-center"></i>
-                    </button>
-                    <button id="align-right" onclick="onTextAlign('right')">
-                            <i class="fas fa-align-right"></i></button>
-                    <button class="delete-txt" onclick="onDeleteline()">
-                            <i class="fas fa-eraser"></i></button>
-
-                </div>
-            </div>
-    
-            </div>
-        
-    </div>
-    </div>
-
-    <!-- ttesttttttt -->
-
-    <!-- <section class="continer-modal flex column">
-        <div class="save-back-container flex space-between">
-            <button name="save" class="save">
-                <a onclick="downloadCanvas(this)" class="fa fa-download"></a>
-            </button>
-            <div class="canvas-tool" onClick="onBackhomePage()">
-                <button class="btn-clear">✗</button>
-            </div>
-        </div>
-            <div class="scatch">
-            <canvas id="canvas"></canvas>
-        </div>
-        
-        <div class="tools-container flex column">
-             <input type="text" class="text-input" id="text-1" onclick="onInputTap()" onkeyup="onAddText(this)" placeholder="Insert text here">
-            <section class="modal-tools flex column">
-                <div class="first-text-tools canvas-tool flex column">
-                    <button class=" canvas-tool nxt-line" onclick="onAddLine()">Add Line</button>
-                    <button class="canvas-tool prev-line" onclick="onNavLine('-')">◀ Previous</button>
-                    <input class="textIdx" type="text" value="1">
-
-                    <button class="nxt-line" onclick="onNavLine('+')">Next ▶</button>
-                </div>
-                
-
-                <div class="canvas-tool flex space-between color">
-                    <input class="btn-color" type="color" name="Textcolor" value="#ffffff" onchange="onColorChange(this)" />
-                    <select id="font" onchange="onChangeFontFam(this.value)">
-                        <option value="impact">Impact</option>
-                        <option value="lucida">Lucida Console</option>
-                        <option value="comic">Comic Sans MS</option>
-                    </select>
-                    <button class="font-resize-btn" onclick="changeFontSize('+')">+</button>
-                    <button class="font-resize-btn" onclick="changeFontSize('-')">-</button>
-                    <div>
+                    </div>
+                    <div class="extars-btns">
+                        <input class="btn-color" type="color" name="Textcolor" value="#ffffff" onchange="onColorChange(this)" />
+                        <button class="increase font-resize-btn" onclick="changeFontSize('+')">
+                            <i class="fas fa-font"></i></button>
+                        <button class="font-resize-btn" onclick="changeFontSize('-')">
+                            <i class="fas fa-font"></i></button>
                         <label class="shadow">❏
                             <input type="checkbox" class="shadow-checkbox" onchange="controlTextShadow()">
                         </label>
+
+                        <button id="left" class="left" onclick="changeTextXPos(this.id)">←</button>
+                        <button id="up" class="up" onclick="changeTextYPos(this.id)">↑</button>
+                        <button id="right" class="right" onclick="changeTextXPos(this.id)">→</button>
+                        <button id="down" class="down" onclick="changeTextYPos(this.id)">↓</button>
+                        <button class="align-left" onclick="onTextAlign('left')">
+                            <i class="fas fa-align-left"></i></button>
+                        <button class="align-center" onclick="onTextAlign('center')">
+                            <i class="fas fa-align-center"></i>
+                        </button>
+                        <button class="align-right" onclick="onTextAlign('right')">
+                            <i class="fas fa-align-right"></i></button>
+                        <button class="delete-txt" onclick="onDeleteline()">
+                            <i class="fas fa-eraser"></i></button>
+
                     </div>
                 </div>
-                <div class="text-dir-align flex space-between">
-                    <button id="left" onclick="changeTextXPos(this.id)">←</button>
-                    <button id="up" onclick="changeTextYPos(this.id)">↑</button>
-                    <button id="right" onclick="changeTextXPos(this.id)">→</button>
-                    <button id="down" onclick="changeTextYPos(this.id)">↓</button>
-                    <button id="align-left" onclick="onTextAlign('left')">L</button>
-                    <button id="align-center" onclick="onTextAlign('center')">&#9776;</button>
-                    <button id="align-right" onclick="onTextAlign('right')">R</button>
-                </div>
 
-            </section>
-        </div>
-    </section> -->
-
-    <footer class="container flex">
-        <div class="in-touch-container flex content-center space-around">
-            <section id="contact" class="flex column align-self-center">
-                <h4>Contact Us</h4>
-                <span class="input-group-text" id="basic-addon2">Your E-mail</span>
-                <input type="text" class="form-control user-email" placeholder="@example.com" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <span class="input-group-text" id="basic-addon2">Subject</span>
-                <input type="text" class="form-control user-subject" placeholder="Type subject here" aria-label="Recipient's username" aria-describedby="basic-addon2">
-
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Type a message</span>
-                </div>
-                <textarea class="form-control user-text" placeholder="You can type here" aria-label="With textarea"></textarea>
-                <button type="button" class="btn btn-warning" onclick="sendInfo()">Submit</button>
-            </section>
-        </div>
+            </div>
 
         </div>
-
-        </div>
-    </footer>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="lib/bs4/js/bootstrap.bundle.min.js"></script>
