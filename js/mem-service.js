@@ -27,17 +27,6 @@ var gImgs = [
 var gCurrMeme = {
     selectedImgId: gImgId,
     texts: [
-        {
-            line: '',
-            fontFamily: 'sans-serif',
-            fontSize: 40,
-            color: '#ffffff',
-            fontFamily: 'Impact, Charcoal, sans-serif',
-            x: 10,
-            y: 50,
-            align: '',
-            width: 0,
-        }
     ]
 }
 
@@ -57,7 +46,6 @@ function updatdePopularWords() {
 }
 
 function drawCanvas(img) {
-    // canvas = document.querySelector('#canvas');
     var imgWidth = img.naturalWidth;
     var imgHeight = img.naturalHeight;
     var ratio = imgWidth / imgHeight;
@@ -67,15 +55,16 @@ function drawCanvas(img) {
 }
 
 function createLine() {
-    if(gCurrMeme.texts.length >= 1)
+    if(gCurrMeme.texts.length)
     gCurrMeme.texts.push({
         line: '',
         fontFamily: 'sans-serif',
         fontSize: 40,
         color: '#ffffff',
         fontFamily: 'Impact, Charcoal, sans-serif',
-        x: (canvas.width / 2) - 50,
-        y: 250,
+        x: (canvas.width / 2),
+        y: canvas.height-10,
+        align:'center',
     })
     else gCurrMeme.texts.push({
         line: '',
@@ -83,8 +72,9 @@ function createLine() {
         fontSize: 40,
         color: '#ffffff',
         fontFamily: 'Impact, Charcoal, sans-serif',
-        x: 10,
+        x: 250,
         y: 50,
+        align:'center',
     })
 }
 
@@ -109,16 +99,9 @@ function findImgByWord(keyword) {
     return imgs;
 }
 
-
-function onPopfilter(el) {
-    var keyWord = el.classList[1];
-    var imgs = findImgByWord(keyWord);
-    return imgs;
-}
 function updateText(elInput) {
     var text = elInput.value;
     gCurrMeme.texts[gCurrTxtIdx].line = text;
-    // drawImage(elInput.value);
     renderCanvas();
 }
 

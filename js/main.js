@@ -19,7 +19,6 @@ function onChangeFontFam(elFont) {
             gCurrMeme.texts[gCurrTxtIdx].fontFamily = '"Comic Sans MS", cursive, sans-serif';
             break;
     }
-    // drawImage();
     renderCanvas();
 }
 
@@ -114,7 +113,6 @@ function onTextAlign(par) {
 
             break;
     }
-    // drawImage();
     renderCanvas();
 }
 
@@ -126,14 +124,12 @@ function changeFontSize(op) {
     }
     var fontSize = gCurrMeme.texts[gCurrTxtIdx].fontSize;
     gCurrMeme.texts[gCurrTxtIdx].fontSize = fontSize;
-    // drawImage();
     renderCanvas();
 }
 
 function onColorChange(elColorInput) {
     var color = elColorInput.value;
     gCurrMeme.texts[gCurrTxtIdx].color = color;
-    // drawImage();
     renderCanvas();
 }
 
@@ -187,7 +183,6 @@ function controlTextShadow() {
         gCurrMeme.texts[gCurrTxtIdx].shadowBlur = 0;
         document.querySelector('.shadow').classList.remove('checked');
     }
-    // drawImage();
     renderCanvas();
 }
 
@@ -195,7 +190,6 @@ function onDeleteline() {
     var elInput = document.querySelector('.text-input');
     gCurrMeme.texts.splice(gCurrTxtIdx, 1);
     elInput.value = '';
-    // drawImage();
     renderCanvas();
 }
 
@@ -235,6 +229,12 @@ function onPopWord(elWord, el) {
 }
 
 
+
+function onPopfilter(el) {
+    var keyWord = el.classList[1];
+    var imgs = findImgByWord(keyWord);
+    return imgs;
+}
 
 function sendInfo() {
     var userEmail = $(".user-email").val();
